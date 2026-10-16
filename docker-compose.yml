@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # === BACKEND SERVICES ===
+  auth-be:
+    build: ./auth-be
+    ports:
+      - "5001:5001"
+    networks:
+      - app-network
+
+  products-be:
+    build: ./products-be
+    ports:
+      - "5002:5002"
+    networks:
+      - app-network
+
+  orders-be:
+    build: ./orders-be
+    ports:
+      - "5003:5003"
+    networks:
+      - app-network
+
+  # === FRONTEND SERVICES ===
+  auth-fe:
+    build: ./auth-fe
+    ports:
+      - "3001:80"
+    networks:
+      - app-network
+
+  products-fe:
+    build: ./products-fe
+    ports:
+      - "3002:80"
+    networks:
+      - app-network
+
+  orders-fe:
+    build: ./orders-fe
+    ports:
+      - "3003:80"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
